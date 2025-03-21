@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Dónde está hoy José Luis?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .emoji {
+            font-size: 60px;
+        }
+        .flag {
+            font-size: 70px;
+            margin: 20px 0;
+        }
+        .info {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .distance {
+            font-weight: bold;
+            color: #ff5733;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Dónde está hoy José Luis? 🤔</h1>
+        <div class="emoji">🧔</div>
+        <div id="flag" class="flag"></div>
+        <h2 id="country"></h2>
+        <p class="info" id="population"></p>
+        <p class="info" id="fact"></p>
+        <p class="info">📍 José Luis está a <span id="distance" class="distance"></span> de su familia.</p>
+    </div>
+
+    <script>
+        const countries = [
+            { name: "Chipre", flag: "🇨🇾", population: "1.2M habitantes", fact: "Tiene más gatos que humanos! 🐱", distance: 3300 },
+            { name: "Mónaco", flag: "🇲🇨", population: "38K habitantes", fact: "Aquí viven más millonarios por metro cuadrado que en ningún otro lado! 💰", distance: 980 },
+            { name: "Eslovaquia", flag: "🇸🇰", population: "5.4M habitantes", fact: "Tiene castillos espectaculares! 🏰", distance: 2200 },
+            { name: "Andorra", flag: "🇦🇩", population: "77K habitantes", fact: "No tiene ejército propio! 🎖️", distance: 600 },
+            { name: "Islas Caimán", flag: "🇰🇾", population: "68K habitantes", fact: "Paraíso fiscal por excelencia! 🏝️", distance: 7400 },
+            { name: "Suiza", flag: "🇨🇭", population: "8.6M habitantes", fact: "Más bancos que panaderías! 🏦", distance: 1250 },
+            { name: "Australia", flag: "🇦🇺", population: "25.7M habitantes", fact: "Aquí hay más canguros que personas! 🦘", distance: 17000 },
+            { name: "Japón", flag: "🇯🇵", population: "125.8M habitantes", fact: "Las máquinas expendedoras venden de todo, hasta ropa interior! 🤖", distance: 10700 },
+            { name: "Brasil", flag: "🇧🇷", population: "213M habitantes", fact: "Aquí se celebra el carnaval más grande del mundo! 🎭", distance: 8300 },
+            { name: "Egipto", flag: "🇪🇬", population: "104M habitantes", fact: "Las pirámides fueron construidas hace más de 4500 años! 🏺", distance: 3600 },
+            { name: "Canadá", flag: "🇨🇦", population: "38M habitantes", fact: "Tiene más lagos que el resto del mundo combinado! 🏞️", distance: 6000 },
+            { name: "Argentina", flag: "🇦🇷", population: "45M habitantes", fact: "Aquí nació el tango! 🎶", distance: 10200 },
+            { name: "Tailandia", flag: "🇹🇭", population: "70M habitantes", fact: "Bangkok tiene el nombre más largo del mundo! 🏙️", distance: 9800 },
+            { name: "India", flag: "🇮🇳", population: "1.4B habitantes", fact: "El Taj Mahal cambia de color según la hora del día! 🌅", distance: 7500 },
+            { name: "Sudáfrica", flag: "🇿🇦", population: "59M habitantes", fact: "Aquí se encuentran los 'Cinco Grandes' de la fauna salvaje! 🦁🐘", distance: 8700 },
+            { name: "México", flag: "🇲🇽", population: "126M habitantes", fact: "El chocolate fue inventado por los mayas! 🍫", distance: 9200 },
+            { name: "Islandia", flag: "🇮🇸", population: "366K habitantes", fact: "No tiene ejército y su agua es de las más puras del mundo! ❄️", distance: 2900 }
+        ];
+        
+        function getDailyCountry() {
+            const today = new Date();
+            const index = today.getDate() % countries.length;
+            return countries[index];
+        }
+        
+        const country = getDailyCountry();
+        document.getElementById("flag").textContent = country.flag;
+        document.getElementById("country").textContent = country.name;
+        document.getElementById("population").textContent = `Población: ${country.population}`;
+        document.getElementById("fact").textContent = `Dato curioso: ${country.fact}`;
+        document.getElementById("distance").textContent = `${country.distance.toLocaleString()} km`;
+    </script>
+</body>
+</html>
